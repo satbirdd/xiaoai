@@ -15,9 +15,9 @@
     <% @category.line_properties.each do |property| %>
       <div class="field">
         <%= property.name %>
-        <span>
+        <span class="<%= property.name %>">
           <% property.line_property_items.each do |item| %>
-            <button><%= item.name %></button>
+            <input type='checkbox' class='<%= item.name %>'><%= item.name %>
           <% end %>
         </span>
       </div>
@@ -27,7 +27,7 @@
   <div>
     <table>
       <% @line_items.shift.product(*@line_items).each do |item| %>
-        <tr>
+        <tr class="hidden <%= item.map { |line| line[:name] }.join(' ') %>"  data-count='<%= item.length %>'>
           <% item.each do |line| %>
             <td><%= line[:name] %></td>
           <% end %>
@@ -41,3 +41,29 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(function() {
+    $(':checkbox').change(function(event) {
+      var className = $(event.target).attr('class');
+      if ($(event.target).prop('checked')) {
+        var element = $('table .' + className).removeClass(className).addClass(className + 'Removed')
+        element.each(function(index, item, en) {
+          var count = 1*$(item).attr('data-count') - 1;
+          $(item).attr('data-count', count);
+          if (count == 0) {
+            $(item).removeClass('hidden');
+          }
+        });
+      } else {
+        var element = $('table .' + className + 'Removed').removeClass(className + 'Removed').addClass(className);
+        element.each(function(index, item, en) {
+          var count = 1*$(item).attr('data-count') + 1;
+          $(item).attr('data-count', count);
+          $(item).addClass('hidden');
+        });
+      }
+    })
+  })
+</script>
