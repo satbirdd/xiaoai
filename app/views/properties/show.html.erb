@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @property.name %>
+</p>
+
+<p>
+  <strong>所属分类:</strong>
+  <%= @property.targetable.name %>
+</p>
+
+<p>
+	<strong>Items</strong>
+	<% @property.property_items.each do |item| %>
+		<span><%= item.name %></span>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', category_properties_path(@property.targetable) %>

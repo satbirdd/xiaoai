@@ -1,0 +1,2 @@
+module LinePropertiesHelper
+end

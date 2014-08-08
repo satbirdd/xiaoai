@@ -1,0 +1,29 @@
+<h1>Listing item_properties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Property</th>
+      <th>Alias</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_properties.each do |item_property| %>
+      <tr>
+        <td><%= item_property.item %></td>
+        <td><%= item_property.property %></td>
+        <td><%= item_property.alias %></td>
+        <td><%= link_to 'Show', item_property %></td>
+        <td><%= link_to 'Edit', edit_item_property_path(item_property) %></td>
+        <td><%= link_to 'Destroy', item_property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item property', new_item_property_path %>

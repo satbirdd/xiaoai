@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @item_property.item %>
+</p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @item_property.property %>
+</p>
+
+<p>
+  <strong>Alias:</strong>
+  <%= @item_property.alias %>
+</p>
+
+<%= link_to 'Edit', edit_item_property_path(@item_property) %> |
+<%= link_to 'Back', item_properties_path %>

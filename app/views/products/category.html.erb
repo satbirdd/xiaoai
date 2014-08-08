@@ -1,0 +1,6 @@
+<h1>选择一个分类</h1>
+<div>
+	<% @categories.each do |category| %>
+		<%= link_to category.name, "/products/new?category_id=#{category.id}" %>
+	<% end %>
+</div>

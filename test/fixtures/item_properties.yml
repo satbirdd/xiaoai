@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: 
+  property_id: 
+  alias: MyString
+
+two:
+  item: 
+  property_id: 
+  alias: MyString

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+	<p>
+  Properties:
+  <% @category.properties.each do |property| %>
+  	<div>
+  		<%= property.name %>:
+  		<% property.property_items.each do |item| %>
+		  	<span>
+		  		<%= item.name %>
+		  	</span>  		
+		  <% end %>
+			<%= link_to 'Edit', edit_property_path(property) %>
+  	</div>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

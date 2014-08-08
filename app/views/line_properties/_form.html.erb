@@ -1,0 +1,41 @@
+<%= form_for([@category, @line_property]) do |f| %>
+  <% if @line_property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@line_property.errors.count, "error") %> prohibited this line_property from being saved:</h2>
+
+      <ul>
+      <% @line_property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :targetable_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :targetable_type %>
+  </div>
+
+  <button class="add-item">+ Add Item</button>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function(argument) {
+    var index = 0;
+    $('.add-item').click(function(event) {
+      $('form').append('<input name="line_property[line_property_items_attributes][' + index + '][name]" type="text">');
+      index ++;
+      return false;
+    })
+  })
+</script>

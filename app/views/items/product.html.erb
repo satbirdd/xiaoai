@@ -1,0 +1,6 @@
+dsadsafsdaf
+<div>
+	<% @products.each do |product| %>
+		<%= link_to product.name, "/items/new?product_id=#{product.id}" %>
+	<% end %>
+</div>

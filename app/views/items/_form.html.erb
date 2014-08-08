@@ -1,0 +1,43 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <% @category.line_properties.each do |property| %>
+      <div class="field">
+        <%= property.name %>
+        <span>
+          <% property.line_property_items.each do |item| %>
+            <button><%= item.name %></button>
+          <% end %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <table>
+      <% @line_items.shift.product(*@line_items).each do |item| %>
+        <tr>
+          <% item.each do |line| %>
+            <td><%= line[:name] %></td>
+          <% end %>
+          <td><input type='text'></td>
+        </tr>      
+      <% end %>
+    </table>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Listing line_property_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Line property</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @line_property_items.each do |line_property_item| %>
+      <tr>
+        <td><%= line_property_item.name %></td>
+        <td><%= line_property_item.line_property %></td>
+        <td><%= link_to 'Show', line_property_item %></td>
+        <td><%= link_to 'Edit', edit_line_property_item_path(line_property_item) %></td>
+        <td><%= link_to 'Destroy', line_property_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Line property item', new_line_property_item_path %>
