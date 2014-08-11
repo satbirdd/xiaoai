@@ -31,16 +31,19 @@
           <% @category.line_properties.each do |property| %>
             <th><%= property.name %></th>
           <% end %>
+          <th>价格</th>
           <th>库存</th>
         </tr>
       </thead>
       <tbody>
-        <% @line_items.shift.product(*@line_items).each do |item| %>
+        <% @line_items.shift.product(*@line_items).each_with_index do |item, index| %>
             <tr class="hidden <%= item.map { |line| line[:name] }.join(' ') %>"  data-count='<%= item.length %>'>
-              <% item.each do |line| %>
+              <% item.each_with_index do |line, inner_index| %>
                 <td><%= line[:name] %></td>
+                <input type='hidden' name="item[line_items_attributes][<%= index %>][line_item_properties_attributes][<%= inner_index %>][item_property_item_id]" value="<%= line[:id] %>" disabled="disabled">
               <% end %>
-              <td><input type='text'>件</td>
+              <td><input type='text' name="item[line_items_attributes][<%= index %>][price]" disabled="disabled"></td>
+              <td><input type='text' name="item[line_items_attributes][<%= index %>][inventory]" disabled="disabled">件</td>
             </tr>      
         <% end %>
       </tbody>
@@ -64,6 +67,8 @@
           $(item).attr('data-count', count);
           if (count == 0) {
             $(item).removeClass('hidden');
+            debugger
+            $(item).find('input').attr('disabled', false);
           }
         });
       } else {
@@ -72,6 +77,8 @@
           var count = 1*$(item).attr('data-count') + 1;
           $(item).attr('data-count', count);
           $(item).addClass('hidden');
+          debugger
+          $(item).find(':input').attr('disabled', true);
         });
       }
     })

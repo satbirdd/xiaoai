@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :line_item_properties
+
+  resources :line_items
+
   resources :line_property_items
 
   resources :item_property_items
