@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "item_properties", ["property_id"], name: "index_item_properties_on_property_id"
+  add_index "item_properties", ["property_id"], name: "index_item_properties_on_property_id", using: :btree
 
   create_table "item_property_items", force: true do |t|
     t.integer  "property_item_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "item_property_items", ["item_id"], name: "index_item_property_items_on_item_id"
-  add_index "item_property_items", ["property_item_id"], name: "index_item_property_items_on_property_item_id"
+  add_index "item_property_items", ["item_id"], name: "index_item_property_items_on_item_id", using: :btree
+  add_index "item_property_items", ["property_item_id"], name: "index_item_property_items_on_property_item_id", using: :btree
 
   create_table "items", force: true do |t|
     t.integer  "shop_id"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "items", ["product_id"], name: "index_items_on_product_id"
-  add_index "items", ["shop_id"], name: "index_items_on_shop_id"
+  add_index "items", ["product_id"], name: "index_items_on_product_id", using: :btree
+  add_index "items", ["shop_id"], name: "index_items_on_shop_id", using: :btree
 
   create_table "line_item_properties", force: true do |t|
     t.integer  "line_item_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "line_item_properties", ["item_property_item_id"], name: "index_line_item_properties_on_item_property_item_id"
-  add_index "line_item_properties", ["line_item_id"], name: "index_line_item_properties_on_line_item_id"
+  add_index "line_item_properties", ["item_property_item_id"], name: "index_line_item_properties_on_item_property_item_id", using: :btree
+  add_index "line_item_properties", ["line_item_id"], name: "index_line_item_properties_on_line_item_id", using: :btree
 
   create_table "line_items", force: true do |t|
     t.integer  "item_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "line_items", ["item_id"], name: "index_line_items_on_item_id"
+  add_index "line_items", ["item_id"], name: "index_line_items_on_item_id", using: :btree
 
   create_table "line_properties", force: true do |t|
     t.integer  "targetable_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.string   "name"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20140811072636) do
     t.datetime "updated_at"
   end
 
-  add_index "shops", ["user_id"], name: "index_shops_on_user_id"
+  add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "login"

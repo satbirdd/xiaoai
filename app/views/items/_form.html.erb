@@ -67,7 +67,6 @@
           $(item).attr('data-count', count);
           if (count == 0) {
             $(item).removeClass('hidden');
-            debugger
             $(item).find('input').attr('disabled', false);
           }
         });
@@ -77,7 +76,6 @@
           var count = 1*$(item).attr('data-count') + 1;
           $(item).attr('data-count', count);
           $(item).addClass('hidden');
-          debugger
           $(item).find(':input').attr('disabled', true);
         });
       }
